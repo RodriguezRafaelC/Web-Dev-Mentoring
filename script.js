@@ -1,24 +1,20 @@
-// --- State Management ---
+
+
 let tasks = JSON.parse(localStorage.getItem('myChecklistTasks')) || [];
 let currentCategory = 'work';
 
-// Set default date to today
 const datePicker = document.getElementById('datePicker');
 datePicker.valueAsDate = new Date();
 
-// --- Event Listeners ---
 datePicker.addEventListener('change', renderTasks);
 
-// Allow "Enter" key to add task
 document.getElementById("taskInput").addEventListener("keypress", function(event) {
     if (event.key === "Enter") addTask();
 });
 
-// --- Core Functions ---
 
 function selectCategory(cat) {
     currentCategory = cat;
-    // Update UI buttons
     document.querySelectorAll('.cat-option').forEach(btn => btn.classList.remove('selected'));
     document.getElementById(`btn-${cat}`).classList.add('selected');
 }
@@ -29,7 +25,6 @@ function addTask() {
     const date = datePicker.value;
 
     if (text === '') {
-        // Use a gentle animation or focus instead of an alert for better UX
         input.focus();
         input.style.borderColor = '#ff7675';
         setTimeout(() => input.style.borderColor = '#dfe6e9', 1000);
@@ -59,7 +54,6 @@ function toggleComplete(id) {
 }
 
 function deleteTask(id) {
-    // A simple confirm is safest for data loss
     if(confirm("Delete this task?")) {
         tasks = tasks.filter(t => t.id !== id);
         saveAndRender();
@@ -108,7 +102,6 @@ function renderTasks() {
         return;
     }
 
-    // Sort: Uncompleted first, then completed
     filteredTasks.sort((a, b) => a.completed - b.completed);
 
     filteredTasks.forEach(task => {
@@ -136,5 +129,5 @@ function renderTasks() {
     });
 }
 
-// Initial Load
+
 renderTasks();
