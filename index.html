@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Leche Plan</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="main-wrapper">
+    <div class="container">
+        <header>
+            <h2><i class="fa-solid fa-layer-group"></i> My Checklist</h2>
+            <div class="date-nav">
+                <label for="datePicker">Date:</label>
+                <input type="date" id="datePicker">
+            </div>
+        </header>
+
+        <div class="category-select" id="categoryContainer">
+            <button class="cat-option selected" onclick="selectCategory('work')" id="btn-work">
+                <i class="fa-solid fa-briefcase"></i> Work
+            </button>
+            <button class="cat-option" onclick="selectCategory('school')" id="btn-school">
+                <i class="fa-solid fa-graduation-cap"></i> School
+            </button>
+            <button class="cat-option" onclick="selectCategory('rec')" id="btn-rec">
+                <i class="fa-solid fa-gamepad"></i> Rec
+            </button>
+            <button class="cat-option" onclick="selectCategory('home')" id="btn-home">
+                <i class="fa-solid fa-house"></i> Home
+            </button>
+            <button class="cat-option" onclick="selectCategory('other')" id="btn-other">
+                <i class="fa-solid fa-list"></i> Other
+            </button>
+        </div>
+
+        <div class="input-group">
+            <input type="text" id="taskInput" placeholder="Add a new task..." autocomplete="off">
+            <button id="addBtn" onclick="addTask()"><i class="fa-solid fa-plus"></i></button>
+        </div>
+
+        <ul id="taskList">
+            </ul>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
